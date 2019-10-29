@@ -1,12 +1,65 @@
-@prefix : <http://www.semanticweb.org/jcwitt/ontologies/2019/9/untitled-ontology-16#> .
+@prefix : <http://scta.info/resource#> .
 @prefix owl: <http://www.w3.org/2002/07/owl#> .
 @prefix rdf: <http://www.w3.org/1999/02/22-rdf-syntax-ns#> .
 @prefix xml: <http://www.w3.org/XML/1998/namespace> .
 @prefix xsd: <http://www.w3.org/2001/XMLSchema#> .
 @prefix rdfs: <http://www.w3.org/2000/01/rdf-schema#> .
-@base <http://www.semanticweb.org/jcwitt/ontologies/2019/9/untitled-ontology-16> .
+@prefix sctap: <http://scta.info/property> .
+@prefix sctar: <http://scta.info/resource> .
+@base <http://scta.info/resource> .
 
-<http://www.semanticweb.org/jcwitt/ontologies/2019/9/untitled-ontology-16> rdf:type owl:Ontology .
+<http://scta.info/resource> rdf:type owl:Ontology .
+
+#################################################################
+#    Object Properties
+#################################################################
+
+###  http://sctap/author
+<http://sctap/author> rdf:type owl:ObjectProperty .
+
+
+###  http://www.semanticweb.org/jcwitt/ontologies/2019/9/untitled-ontology-16#author
+<http://www.semanticweb.org/jcwitt/ontologies/2019/9/untitled-ontology-16#author> rdf:type owl:ObjectProperty ;
+                                                                                  rdfs:domain <http://scta.info/resource/Expression> ;
+                                                                                  rdfs:range <http://scta.info/resource/Person> ;
+                                                                                  owl:propertyDisjointWith <http://www.semanticweb.org/jcwitt/ontologies/2019/9/untitled-ontology-16#editor> ;
+                                                                                  rdfs:comment "Relates any document-type to any person that is involved with the transcription, xml encoding, data preparation of transcription file."@en ;
+                                                                                  rdfs:label "has author"@en .
+
+
+###  http://www.semanticweb.org/jcwitt/ontologies/2019/9/untitled-ontology-16#contributor
+<http://www.semanticweb.org/jcwitt/ontologies/2019/9/untitled-ontology-16#contributor> rdf:type owl:ObjectProperty ;
+                                                                                       rdfs:domain [ owl:intersectionOf ( <http://scta.info/resource/Expression>
+                                                                                                                          <http://scta.info/resource/Manifestation>
+                                                                                                                          <http://scta.info/resource/Transcription>
+                                                                                                                          <http://scta.info/resource/Work>
+                                                                                                                        ) ;
+                                                                                                     rdf:type owl:Class
+                                                                                                   ] ;
+                                                                                       rdfs:range <http://scta.info/resource/Person> ;
+                                                                                       rdfs:label "has contributor"@en .
+
+
+###  http://www.semanticweb.org/jcwitt/ontologies/2019/9/untitled-ontology-16#creator
+<http://www.semanticweb.org/jcwitt/ontologies/2019/9/untitled-ontology-16#creator> rdf:type owl:ObjectProperty ;
+                                                                                   rdfs:domain <http://scta.info/resource/Work> ;
+                                                                                   rdfs:range <http://scta.info/resource/Person> ;
+                                                                                   rdfs:label "has creator"@en .
+
+
+###  http://www.semanticweb.org/jcwitt/ontologies/2019/9/untitled-ontology-16#editor
+<http://www.semanticweb.org/jcwitt/ontologies/2019/9/untitled-ontology-16#editor> rdf:type owl:ObjectProperty ;
+                                                                                  rdfs:domain <http://scta.info/resource/Manifestation> ;
+                                                                                  rdfs:range <http://scta.info/resource/Person> ;
+                                                                                  rdfs:label "has editor"@en .
+
+
+###  http://www.semanticweb.org/jcwitt/ontologies/2019/9/untitled-ontology-16#transcriber
+<http://www.semanticweb.org/jcwitt/ontologies/2019/9/untitled-ontology-16#transcriber> rdf:type owl:ObjectProperty ;
+                                                                                       rdfs:domain <http://scta.info/resource/Transcription> ;
+                                                                                       rdfs:range <http://scta.info/resource/Person> ;
+                                                                                       rdfs:label "has transcriber"@en .
+
 
 #################################################################
 #    Classes
@@ -40,4 +93,13 @@
                                  rdfs:subClassOf <http://scta.info/resource/TextItem> .
 
 
-###  Generated by the OWL API (version 4.5.6.2018-09-06T00:27:41Z) https://github.com/owlcs/owlapi
+#################################################################
+#    Individuals
+#################################################################
+
+###  http://www.semanticweb.org/jcwitt/ontologies/2019/9/untitled-ontology-16#Jeffrey_C._Wit
+<http://www.semanticweb.org/jcwitt/ontologies/2019/9/untitled-ontology-16#Jeffrey_C._Wit> rdf:type owl:NamedIndividual ,
+                                                                                                   <http://scta.info/resource/Person> .
+
+
+###  Generated by the OWL API (version 4.5.9.2019-02-01T07:24:44Z) https://github.com/owlcs/owlapi
