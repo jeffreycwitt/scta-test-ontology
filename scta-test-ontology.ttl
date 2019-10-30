@@ -51,6 +51,58 @@ Its goal is to structure the relationship between textitems and persons."""@en .
                                    rdfs:label "has editor"@en .
 
 
+###  http://scta.info/property/hasExpression
+<http://scta.info/property/hasExpression> rdf:type owl:ObjectProperty ;
+                                          owl:inverseOf <http://scta.info/property/isExpressionOf> ;
+                                          owl:propertyDisjointWith <http://scta.info/property/hasManifestation> ,
+                                                                   <http://scta.info/property/hasTranscription> ,
+                                                                   <http://scta.info/property/hasWork> ;
+                                          rdfs:label "has expression"@en .
+
+
+###  http://scta.info/property/hasManifestation
+<http://scta.info/property/hasManifestation> rdf:type owl:ObjectProperty ;
+                                             owl:inverseOf <http://scta.info/property/isManifestationOf> ;
+                                             owl:propertyDisjointWith <http://scta.info/property/hasTranscription> ,
+                                                                      <http://scta.info/property/hasWork> ;
+                                             rdfs:label "has manifestation"@en .
+
+
+###  http://scta.info/property/hasTranscription
+<http://scta.info/property/hasTranscription> rdf:type owl:ObjectProperty ;
+                                             owl:inverseOf <http://scta.info/property/isTranscriptionOf> ;
+                                             owl:propertyDisjointWith <http://scta.info/property/hasWork> ;
+                                             rdfs:label "has transcription"@en .
+
+
+###  http://scta.info/property/hasWork
+<http://scta.info/property/hasWork> rdf:type owl:ObjectProperty ;
+                                    owl:inverseOf <http://scta.info/property/isWorkOf> ;
+                                    rdfs:domain <http://scta.info/resource/Expression> ;
+                                    rdfs:range <http://scta.info/resource/Work> ;
+                                    rdfs:label "has work"@en .
+
+
+###  http://scta.info/property/isExpressionOf
+<http://scta.info/property/isExpressionOf> rdf:type owl:ObjectProperty ;
+                                           rdfs:label "is expression of"@en .
+
+
+###  http://scta.info/property/isManifestationOf
+<http://scta.info/property/isManifestationOf> rdf:type owl:ObjectProperty ;
+                                              rdfs:label "is manifestation of"@en .
+
+
+###  http://scta.info/property/isTranscriptionOf
+<http://scta.info/property/isTranscriptionOf> rdf:type owl:ObjectProperty ;
+                                              rdfs:label "is transcription of"@en .
+
+
+###  http://scta.info/property/isWorkOf
+<http://scta.info/property/isWorkOf> rdf:type owl:ObjectProperty ;
+                                     rdfs:label "is work of"@en .
+
+
 ###  http://scta.info/property/transcriber
 <http://scta.info/property/transcriber> rdf:type owl:ObjectProperty ;
                                         rdfs:domain <http://scta.info/resource/Transcription> ;
@@ -66,13 +118,15 @@ Its goal is to structure the relationship between textitems and persons."""@en .
 <http://scta.info/resource/Expression> rdf:type owl:Class ;
                                        rdfs:subClassOf <http://scta.info/resource/TextItem> ;
                                        owl:disjointWith <http://scta.info/resource/Manifestation> ,
+                                                        <http://scta.info/resource/Transcription> ,
                                                         <http://scta.info/resource/Work> .
 
 
 ###  http://scta.info/resource/Manifestation
 <http://scta.info/resource/Manifestation> rdf:type owl:Class ;
                                           rdfs:subClassOf <http://scta.info/resource/TextItem> ;
-                                          owl:disjointWith <http://scta.info/resource/Work> .
+                                          owl:disjointWith <http://scta.info/resource/Transcription> ,
+                                                           <http://scta.info/resource/Work> .
 
 
 ###  http://scta.info/resource/Person
@@ -87,7 +141,8 @@ Its goal is to structure the relationship between textitems and persons."""@en .
 
 ###  http://scta.info/resource/Transcription
 <http://scta.info/resource/Transcription> rdf:type owl:Class ;
-                                          rdfs:subClassOf <http://scta.info/resource/TextItem> .
+                                          rdfs:subClassOf <http://scta.info/resource/TextItem> ;
+                                          owl:disjointWith <http://scta.info/resource/Work> .
 
 
 ###  http://scta.info/resource/Work
@@ -102,6 +157,19 @@ Its goal is to structure the relationship between textitems and persons."""@en .
 ###  http://www.semanticweb.org/jcwitt/ontologies/2019/9/untitled-ontology-16#Jeffrey_C._Wit
 <http://www.semanticweb.org/jcwitt/ontologies/2019/9/untitled-ontology-16#Jeffrey_C._Wit> rdf:type owl:NamedIndividual ,
                                                                                                    <http://scta.info/resource/Person> .
+
+
+#################################################################
+#    General axioms
+#################################################################
+
+[ rdf:type owl:AllDisjointProperties ;
+  owl:members ( <http://scta.info/property/isExpressionOf>
+                <http://scta.info/property/isManifestationOf>
+                <http://scta.info/property/isTranscriptionOf>
+                <http://scta.info/property/isWorkOf>
+              )
+] .
 
 
 ###  Generated by the OWL API (version 4.5.9.2019-02-01T07:24:44Z) https://github.com/owlcs/owlapi
