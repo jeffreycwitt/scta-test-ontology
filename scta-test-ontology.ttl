@@ -76,7 +76,8 @@ Its goal is to structure the relationship between textitems and persons."""@en .
 
 
 ###  http://scta.info/resource/Person
-<http://scta.info/resource/Person> rdf:type owl:Class .
+<http://scta.info/resource/Person> rdf:type owl:Class ;
+                                   owl:disjointWith <http://scta.info/resource/TextItem> .
 
 
 ###  http://scta.info/resource/TextItem
