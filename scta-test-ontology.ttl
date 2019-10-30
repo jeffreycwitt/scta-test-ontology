@@ -15,16 +15,16 @@
 #################################################################
 
 ###  http://sctap/author
-<http://sctap/author> rdf:type owl:ObjectProperty .
+<http://sctap/author> rdf:type owl:ObjectProperty ;
+                      rdfs:domain <http://scta.info/resource/Expression> ;
+                      rdfs:range <http://scta.info/resource/Person> ;
+                      owl:propertyDisjointWith <http://sctap/editor> ;
+                      rdfs:label "has author"@en .
 
 
-###  http://www.semanticweb.org/jcwitt/ontologies/2019/9/untitled-ontology-16#author
-<http://www.semanticweb.org/jcwitt/ontologies/2019/9/untitled-ontology-16#author> rdf:type owl:ObjectProperty ;
-                                                                                  rdfs:domain <http://scta.info/resource/Expression> ;
-                                                                                  rdfs:range <http://scta.info/resource/Person> ;
-                                                                                  owl:propertyDisjointWith <http://www.semanticweb.org/jcwitt/ontologies/2019/9/untitled-ontology-16#editor> ;
-                                                                                  rdfs:comment "Relates any document-type to any person that is involved with the transcription, xml encoding, data preparation of transcription file."@en ;
-                                                                                  rdfs:label "has author"@en .
+###  http://sctap/editor
+<http://sctap/editor> rdf:type owl:ObjectProperty ;
+                      rdfs:label "has editor"@en .
 
 
 ###  http://www.semanticweb.org/jcwitt/ontologies/2019/9/untitled-ontology-16#contributor
@@ -45,13 +45,6 @@
                                                                                    rdfs:domain <http://scta.info/resource/Work> ;
                                                                                    rdfs:range <http://scta.info/resource/Person> ;
                                                                                    rdfs:label "has creator"@en .
-
-
-###  http://www.semanticweb.org/jcwitt/ontologies/2019/9/untitled-ontology-16#editor
-<http://www.semanticweb.org/jcwitt/ontologies/2019/9/untitled-ontology-16#editor> rdf:type owl:ObjectProperty ;
-                                                                                  rdfs:domain <http://scta.info/resource/Manifestation> ;
-                                                                                  rdfs:range <http://scta.info/resource/Person> ;
-                                                                                  rdfs:label "has editor"@en .
 
 
 ###  http://www.semanticweb.org/jcwitt/ontologies/2019/9/untitled-ontology-16#transcriber
