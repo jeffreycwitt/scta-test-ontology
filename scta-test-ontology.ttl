@@ -4,54 +4,58 @@
 @prefix xml: <http://www.w3.org/XML/1998/namespace> .
 @prefix xsd: <http://www.w3.org/2001/XMLSchema#> .
 @prefix rdfs: <http://www.w3.org/2000/01/rdf-schema#> .
-@prefix sctap: <http://scta.info/property> .
-@prefix sctar: <http://scta.info/resource> .
+@prefix sctap: <http://scta.info/property#> .
+@prefix sctar: <http://scta.info/resource#> .
 @base <http://scta.info/resource> .
 
-<http://scta.info/resource> rdf:type owl:Ontology .
+<http://scta.info/resource> rdf:type owl:Ontology ;
+                             rdfs:comment """This is a test-ontology for the scta-project.
+Its goal is to structure the relationship between textitems and persons."""@en .
 
 #################################################################
 #    Object Properties
 #################################################################
 
-###  http://sctap/author
-<http://sctap/author> rdf:type owl:ObjectProperty ;
-                      rdfs:domain <http://scta.info/resource/Expression> ;
-                      rdfs:range <http://scta.info/resource/Person> ;
-                      owl:propertyDisjointWith <http://sctap/editor> ;
-                      rdfs:label "has author"@en .
+###  http://scta.info/property/author
+<http://scta.info/property/author> rdf:type owl:ObjectProperty ;
+                                   rdfs:domain <http://scta.info/resource/Expression> ;
+                                   rdfs:range <http://scta.info/resource/Person> ;
+                                   owl:propertyDisjointWith <http://scta.info/property/editor> ;
+                                   rdfs:label "has author"@en .
 
 
-###  http://sctap/editor
-<http://sctap/editor> rdf:type owl:ObjectProperty ;
-                      rdfs:label "has editor"@en .
+###  http://scta.info/property/contributor
+<http://scta.info/property/contributor> rdf:type owl:ObjectProperty ;
+                                        rdfs:domain [ owl:intersectionOf ( <http://scta.info/resource/Expression>
+                                                                           <http://scta.info/resource/Manifestation>
+                                                                           <http://scta.info/resource/Transcription>
+                                                                           <http://scta.info/resource/Work>
+                                                                         ) ;
+                                                      rdf:type owl:Class
+                                                    ] ;
+                                        rdfs:range <http://scta.info/resource/Person> ;
+                                        rdfs:label "has contributor"@en .
 
 
-###  http://www.semanticweb.org/jcwitt/ontologies/2019/9/untitled-ontology-16#contributor
-<http://www.semanticweb.org/jcwitt/ontologies/2019/9/untitled-ontology-16#contributor> rdf:type owl:ObjectProperty ;
-                                                                                       rdfs:domain [ owl:intersectionOf ( <http://scta.info/resource/Expression>
-                                                                                                                          <http://scta.info/resource/Manifestation>
-                                                                                                                          <http://scta.info/resource/Transcription>
-                                                                                                                          <http://scta.info/resource/Work>
-                                                                                                                        ) ;
-                                                                                                     rdf:type owl:Class
-                                                                                                   ] ;
-                                                                                       rdfs:range <http://scta.info/resource/Person> ;
-                                                                                       rdfs:label "has contributor"@en .
+###  http://scta.info/property/creator
+<http://scta.info/property/creator> rdf:type owl:ObjectProperty ;
+                                    rdfs:domain <http://scta.info/resource/Work> ;
+                                    rdfs:range <http://scta.info/resource/Person> ;
+                                    rdfs:label "has creator"@en .
 
 
-###  http://www.semanticweb.org/jcwitt/ontologies/2019/9/untitled-ontology-16#creator
-<http://www.semanticweb.org/jcwitt/ontologies/2019/9/untitled-ontology-16#creator> rdf:type owl:ObjectProperty ;
-                                                                                   rdfs:domain <http://scta.info/resource/Work> ;
-                                                                                   rdfs:range <http://scta.info/resource/Person> ;
-                                                                                   rdfs:label "has creator"@en .
+###  http://scta.info/property/editor
+<http://scta.info/property/editor> rdf:type owl:ObjectProperty ;
+                                   rdfs:domain <http://scta.info/resource/Manifestation> ;
+                                   rdfs:range <http://scta.info/resource/Person> ;
+                                   rdfs:label "has editor"@en .
 
 
-###  http://www.semanticweb.org/jcwitt/ontologies/2019/9/untitled-ontology-16#transcriber
-<http://www.semanticweb.org/jcwitt/ontologies/2019/9/untitled-ontology-16#transcriber> rdf:type owl:ObjectProperty ;
-                                                                                       rdfs:domain <http://scta.info/resource/Transcription> ;
-                                                                                       rdfs:range <http://scta.info/resource/Person> ;
-                                                                                       rdfs:label "has transcriber"@en .
+###  http://scta.info/property/transcriber
+<http://scta.info/property/transcriber> rdf:type owl:ObjectProperty ;
+                                        rdfs:domain <http://scta.info/resource/Transcription> ;
+                                        rdfs:range <http://scta.info/resource/Person> ;
+                                        rdfs:label "has transcriber"@en .
 
 
 #################################################################
@@ -60,12 +64,15 @@
 
 ###  http://scta.info/resource/Expression
 <http://scta.info/resource/Expression> rdf:type owl:Class ;
-                                       rdfs:subClassOf <http://scta.info/resource/TextItem> .
+                                       rdfs:subClassOf <http://scta.info/resource/TextItem> ;
+                                       owl:disjointWith <http://scta.info/resource/Manifestation> ,
+                                                        <http://scta.info/resource/Work> .
 
 
 ###  http://scta.info/resource/Manifestation
 <http://scta.info/resource/Manifestation> rdf:type owl:Class ;
-                                          rdfs:subClassOf <http://scta.info/resource/TextItem> .
+                                          rdfs:subClassOf <http://scta.info/resource/TextItem> ;
+                                          owl:disjointWith <http://scta.info/resource/Work> .
 
 
 ###  http://scta.info/resource/Person
@@ -73,7 +80,8 @@
 
 
 ###  http://scta.info/resource/TextItem
-<http://scta.info/resource/TextItem> rdf:type owl:Class .
+<http://scta.info/resource/TextItem> rdf:type owl:Class ;
+                                     rdfs:comment "Every existing text is a manifestation of the expression of a work. It might have been translated."@en .
 
 
 ###  http://scta.info/resource/Transcription
