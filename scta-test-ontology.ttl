@@ -149,7 +149,8 @@ Its goal is to structure the relationship between textitems and persons."""@en .
 <http://scta.info/property/isManifestationOf> rdf:type owl:ObjectProperty ;
                                               rdfs:subPropertyOf <http://scta.info/property/textitemToTextItemRelationship> ;
                                               rdfs:domain <http://scta.info/resource/Manifestation> ;
-                                              rdfs:range <http://scta.info/resource/Expression> ;
+                                              rdfs:range <http://scta.info/resource/Expression> ,
+                                                         <http://scta.info/resource/Transcription> ;
                                               owl:propertyDisjointWith <http://scta.info/property/isTranscriptionOf> ;
                                               rdfs:label "is manifestation of"@en .
 
@@ -267,6 +268,16 @@ Its goal is to structure the relationship between textitems and persons."""@en .
                                                          <http://scta.info/resource/Transcriber> .
 
 
+###  http://scta.info/resource/Decade1_Sermon1_Bern1558
+<http://scta.info/resource/Decade1_Sermon1_Bern1558> rdf:type owl:NamedIndividual ,
+                                                              <http://scta.info/resource/Manifestation> .
+
+
+###  http://scta.info/resource/Decade1_Sermon1_London1587
+<http://scta.info/resource/Decade1_Sermon1_London1587> rdf:type owl:NamedIndividual ,
+                                                                <http://scta.info/resource/Manifestation> .
+
+
 ###  http://scta.info/resource/Ema-Joanne_Brauchler
 <http://scta.info/resource/Ema-Joanne_Brauchler> rdf:type owl:NamedIndividual ,
                                                           <http://scta.info/resource/Contributor> ,
@@ -280,41 +291,23 @@ Its goal is to structure the relationship between textitems and persons."""@en .
                                                         <http://scta.info/resource/Creator> .
 
 
-###  http://scta.info/resource/UD1xh4-XddV3R
-<http://scta.info/resource/UD1xh4-XddV3R> rdf:type owl:NamedIndividual ,
-                                                   <http://scta.info/resource/Expression> ;
-                                          rdfs:comment "Decade 1, Sermon 1" .
-
-
 ###  http://scta.info/resource/UD1xh4-XddV3R-d1e313
 <http://scta.info/resource/UD1xh4-XddV3R-d1e313> rdf:type owl:NamedIndividual ,
-                                                          <http://scta.info/resource/TextItem> ;
+                                                          <http://scta.info/resource/Manifestation> ;
                                                  rdfs:comment """Paragraph in 
 Decade 1, Sermon 1""" .
 
 
 ###  http://scta.info/resource/cod-U78DFf_UD1xh4-XddV3R
 <http://scta.info/resource/cod-U78DFf_UD1xh4-XddV3R> rdf:type owl:NamedIndividual ,
-                                                              <http://scta.info/resource/Manifestation> ;
-                                                     <http://scta.info/property/hasExpression> <http://scta.info/resource/UD1xh4-XddV3R> ;
-                                                     rdfs:comment "Decade 1, Sermon 1, german version" .
-
-
-###  http://scta.info/resource/cod-U78DFf_UD1xh4-XddV3R.xml
-<http://scta.info/resource/cod-U78DFf_UD1xh4-XddV3R.xml> rdf:type owl:NamedIndividual ,
-                                                                  <http://scta.info/resource/Transcription> .
+                                                              <http://scta.info/resource/Transcription> ;
+                                                     <http://scta.info/property/isTranscriptionOf> <http://scta.info/resource/Decade1_Sermon1_Bern1558> .
 
 
 ###  http://scta.info/resource/cod-u2dgeg_UD1xh4-XddV3R
 <http://scta.info/resource/cod-u2dgeg_UD1xh4-XddV3R> rdf:type owl:NamedIndividual ,
-                                                              <http://scta.info/resource/Manifestation> ;
-                                                     <http://scta.info/property/hasExpression> <http://scta.info/resource/UD1xh4-XddV3R> ;
-                                                     rdfs:comment "Decade 1, Sermon 1, english version" .
-
-
-###  http://scta.info/resource/cod-u2dgeg_UD1xh4-XddV3R.xml
-<http://scta.info/resource/cod-u2dgeg_UD1xh4-XddV3R.xml> rdf:type owl:NamedIndividual ,
-                                                                  <http://scta.info/resource/Transcription> .
+                                                              <http://scta.info/resource/Transcription> ;
+                                                     <http://scta.info/property/isTranscriptionOf> <http://scta.info/resource/Decade1_Sermon1_London1587> .
 
 
 ###  http://www.semanticweb.org/jcwitt/ontologies/2019/9/untitled-ontology-16#Jeffrey_C._Wit
