@@ -18,7 +18,7 @@ Its goal is to structure the relationship between textitems and persons."""@en .
 
 ###  http://scta.info/property/author
 <http://scta.info/property/author> rdf:type owl:ObjectProperty ;
-                                   rdfs:subPropertyOf <http://scta.info/property/textItemtoPersonRelation> ;
+                                   rdfs:subPropertyOf <http://scta.info/property/textitemToPersonRelationship> ;
                                    owl:inverseOf <http://scta.info/property/isAuthorOf> ;
                                    rdfs:domain <http://scta.info/resource/Expression> ;
                                    rdfs:range <http://scta.info/resource/Person> ;
@@ -30,7 +30,7 @@ Its goal is to structure the relationship between textitems and persons."""@en .
 
 ###  http://scta.info/property/contributor
 <http://scta.info/property/contributor> rdf:type owl:ObjectProperty ;
-                                        rdfs:subPropertyOf <http://scta.info/property/textItemtoPersonRelation> ;
+                                        rdfs:subPropertyOf <http://scta.info/property/textitemToPersonRelationship> ;
                                         owl:inverseOf <http://scta.info/property/isContributorOf> ;
                                         rdfs:domain [ owl:intersectionOf ( <http://scta.info/resource/Expression>
                                                                            <http://scta.info/resource/Manifestation>
@@ -45,7 +45,7 @@ Its goal is to structure the relationship between textitems and persons."""@en .
 
 ###  http://scta.info/property/creator
 <http://scta.info/property/creator> rdf:type owl:ObjectProperty ;
-                                    rdfs:subPropertyOf <http://scta.info/property/textItemtoPersonRelation> ;
+                                    rdfs:subPropertyOf <http://scta.info/property/textitemToPersonRelationship> ;
                                     owl:inverseOf <http://scta.info/property/isCreatorOf> ;
                                     rdfs:domain <http://scta.info/resource/Work> ;
                                     rdfs:range <http://scta.info/resource/Person> ;
@@ -56,7 +56,7 @@ Its goal is to structure the relationship between textitems and persons."""@en .
 
 ###  http://scta.info/property/editor
 <http://scta.info/property/editor> rdf:type owl:ObjectProperty ;
-                                   rdfs:subPropertyOf <http://scta.info/property/textItemtoPersonRelation> ;
+                                   rdfs:subPropertyOf <http://scta.info/property/textitemToPersonRelationship> ;
                                    owl:inverseOf <http://scta.info/property/isEditorOf> ;
                                    rdfs:domain <http://scta.info/resource/Manifestation> ;
                                    rdfs:range <http://scta.info/resource/Person> ;
@@ -66,7 +66,7 @@ Its goal is to structure the relationship between textitems and persons."""@en .
 
 ###  http://scta.info/property/hasExpression
 <http://scta.info/property/hasExpression> rdf:type owl:ObjectProperty ;
-                                          rdfs:subPropertyOf <http://scta.info/property/textitemToTextItemRelation> ;
+                                          rdfs:subPropertyOf <http://scta.info/property/textitemToTextItemRelationship> ;
                                           owl:inverseOf <http://scta.info/property/isExpressionOf> ;
                                           rdfs:domain <http://scta.info/resource/Work> ;
                                           rdfs:range <http://scta.info/resource/Expression> ;
@@ -77,7 +77,7 @@ Its goal is to structure the relationship between textitems and persons."""@en .
 
 ###  http://scta.info/property/hasManifestation
 <http://scta.info/property/hasManifestation> rdf:type owl:ObjectProperty ;
-                                             rdfs:subPropertyOf <http://scta.info/property/textitemToTextItemRelation> ;
+                                             rdfs:subPropertyOf <http://scta.info/property/textitemToTextItemRelationship> ;
                                              owl:inverseOf <http://scta.info/property/isManifestationOf> ;
                                              rdfs:domain <http://scta.info/resource/Expression> ;
                                              rdfs:range <http://scta.info/resource/Manifestation> ;
@@ -87,7 +87,7 @@ Its goal is to structure the relationship between textitems and persons."""@en .
 
 ###  http://scta.info/property/hasTranscription
 <http://scta.info/property/hasTranscription> rdf:type owl:ObjectProperty ;
-                                             rdfs:subPropertyOf <http://scta.info/property/textitemToTextItemRelation> ;
+                                             rdfs:subPropertyOf <http://scta.info/property/textitemToTextItemRelationship> ;
                                              owl:inverseOf <http://scta.info/property/isTranscriptionOf> ;
                                              rdfs:domain <http://scta.info/resource/Manifestation> ;
                                              rdfs:range <http://scta.info/resource/Transcription> ;
@@ -96,7 +96,7 @@ Its goal is to structure the relationship between textitems and persons."""@en .
 
 ###  http://scta.info/property/isAuthorOf
 <http://scta.info/property/isAuthorOf> rdf:type owl:ObjectProperty ;
-                                       rdfs:subPropertyOf <http://scta.info/property/textItemtoPersonRelation> ;
+                                       rdfs:subPropertyOf <http://scta.info/property/textitemToPersonRelationship> ;
                                        rdfs:domain <http://scta.info/resource/Person> ;
                                        rdfs:range <http://scta.info/resource/Expression> ;
                                        owl:propertyDisjointWith <http://scta.info/property/isCreatorOf> ,
@@ -107,7 +107,7 @@ Its goal is to structure the relationship between textitems and persons."""@en .
 
 ###  http://scta.info/property/isContributorOf
 <http://scta.info/property/isContributorOf> rdf:type owl:ObjectProperty ;
-                                            rdfs:subPropertyOf <http://scta.info/property/textItemtoPersonRelation> ;
+                                            rdfs:subPropertyOf <http://scta.info/property/textitemToPersonRelationship> ;
                                             rdfs:domain <http://scta.info/resource/Person> ;
                                             rdfs:range <http://scta.info/resource/Expression> ,
                                                        <http://scta.info/resource/Manifestation> ,
@@ -118,7 +118,7 @@ Its goal is to structure the relationship between textitems and persons."""@en .
 
 ###  http://scta.info/property/isCreatorOf
 <http://scta.info/property/isCreatorOf> rdf:type owl:ObjectProperty ;
-                                        rdfs:subPropertyOf <http://scta.info/property/textItemtoPersonRelation> ;
+                                        rdfs:subPropertyOf <http://scta.info/property/textitemToPersonRelationship> ;
                                         rdfs:domain <http://scta.info/resource/Person> ;
                                         rdfs:range <http://scta.info/resource/Work> ;
                                         owl:propertyDisjointWith <http://scta.info/property/isEditorOf> ,
@@ -128,7 +128,7 @@ Its goal is to structure the relationship between textitems and persons."""@en .
 
 ###  http://scta.info/property/isEditorOf
 <http://scta.info/property/isEditorOf> rdf:type owl:ObjectProperty ;
-                                       rdfs:subPropertyOf <http://scta.info/property/textItemtoPersonRelation> ;
+                                       rdfs:subPropertyOf <http://scta.info/property/textitemToPersonRelationship> ;
                                        rdfs:domain <http://scta.info/resource/Person> ;
                                        rdfs:range <http://scta.info/resource/Manifestation> ;
                                        owl:propertyDisjointWith <http://scta.info/property/isTranscriberOf> ;
@@ -137,7 +137,7 @@ Its goal is to structure the relationship between textitems and persons."""@en .
 
 ###  http://scta.info/property/isExpressionOf
 <http://scta.info/property/isExpressionOf> rdf:type owl:ObjectProperty ;
-                                           rdfs:subPropertyOf <http://scta.info/property/textitemToTextItemRelation> ;
+                                           rdfs:subPropertyOf <http://scta.info/property/textitemToTextItemRelationship> ;
                                            rdfs:domain <http://scta.info/resource/Expression> ;
                                            rdfs:range <http://scta.info/resource/Work> ;
                                            owl:propertyDisjointWith <http://scta.info/property/isManifestationOf> ,
@@ -147,7 +147,7 @@ Its goal is to structure the relationship between textitems and persons."""@en .
 
 ###  http://scta.info/property/isManifestationOf
 <http://scta.info/property/isManifestationOf> rdf:type owl:ObjectProperty ;
-                                              rdfs:subPropertyOf <http://scta.info/property/textitemToTextItemRelation> ;
+                                              rdfs:subPropertyOf <http://scta.info/property/textitemToTextItemRelationship> ;
                                               rdfs:domain <http://scta.info/resource/Manifestation> ;
                                               rdfs:range <http://scta.info/resource/Expression> ;
                                               owl:propertyDisjointWith <http://scta.info/property/isTranscriptionOf> ;
@@ -156,7 +156,7 @@ Its goal is to structure the relationship between textitems and persons."""@en .
 
 ###  http://scta.info/property/isTranscriberOf
 <http://scta.info/property/isTranscriberOf> rdf:type owl:ObjectProperty ;
-                                            rdfs:subPropertyOf <http://scta.info/property/textItemtoPersonRelation> ;
+                                            rdfs:subPropertyOf <http://scta.info/property/textitemToPersonRelationship> ;
                                             owl:inverseOf <http://scta.info/property/transcriber> ;
                                             rdfs:domain <http://scta.info/resource/Person> ;
                                             rdfs:range <http://scta.info/resource/Transcription> ;
@@ -165,27 +165,27 @@ Its goal is to structure the relationship between textitems and persons."""@en .
 
 ###  http://scta.info/property/isTranscriptionOf
 <http://scta.info/property/isTranscriptionOf> rdf:type owl:ObjectProperty ;
-                                              rdfs:subPropertyOf <http://scta.info/property/textitemToTextItemRelation> ;
+                                              rdfs:subPropertyOf <http://scta.info/property/textitemToTextItemRelationship> ;
                                               rdfs:domain <http://scta.info/resource/Transcription> ;
                                               rdfs:range <http://scta.info/resource/Manifestation> ;
                                               rdfs:label "is transcription of"@en .
 
 
-###  http://scta.info/property/textItemtoPersonRelation
-<http://scta.info/property/textItemtoPersonRelation> rdf:type owl:ObjectProperty ;
-                                                     rdfs:domain <http://scta.info/resource/TextItem> ;
-                                                     rdfs:range <http://scta.info/resource/Person> .
+###  http://scta.info/property/textitemToPersonRelationship
+<http://scta.info/property/textitemToPersonRelationship> rdf:type owl:ObjectProperty ;
+                                                         rdfs:domain <http://scta.info/resource/TextItem> ;
+                                                         rdfs:range <http://scta.info/resource/Person> .
 
 
-###  http://scta.info/property/textitemToTextItemRelation
-<http://scta.info/property/textitemToTextItemRelation> rdf:type owl:ObjectProperty ;
-                                                       rdfs:domain <http://scta.info/resource/TextItem> ;
-                                                       rdfs:range <http://scta.info/resource/TextItem> .
+###  http://scta.info/property/textitemToTextItemRelationship
+<http://scta.info/property/textitemToTextItemRelationship> rdf:type owl:ObjectProperty ;
+                                                           rdfs:domain <http://scta.info/resource/TextItem> ;
+                                                           rdfs:range <http://scta.info/resource/TextItem> .
 
 
 ###  http://scta.info/property/transcriber
 <http://scta.info/property/transcriber> rdf:type owl:ObjectProperty ;
-                                        rdfs:subPropertyOf <http://scta.info/property/textItemtoPersonRelation> ;
+                                        rdfs:subPropertyOf <http://scta.info/property/textitemToPersonRelationship> ;
                                         rdfs:domain <http://scta.info/resource/Transcription> ;
                                         rdfs:range <http://scta.info/resource/Person> ;
                                         rdfs:label "has transcriber"@en .
