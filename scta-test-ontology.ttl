@@ -155,6 +155,13 @@ Its goal is to structure the relationship between textitems and persons."""@en .
                                               rdfs:label "is manifestation of"@en .
 
 
+###  http://scta.info/property/isPartOf
+<http://scta.info/property/isPartOf> rdf:type owl:ObjectProperty ;
+                                     rdfs:subPropertyOf <http://scta.info/property/textitemToTextItemRelationship> ;
+                                     rdfs:domain <http://scta.info/resource/TextItem> ;
+                                     rdfs:range <http://scta.info/resource/TextItem> .
+
+
 ###  http://scta.info/property/isTranscriberOf
 <http://scta.info/property/isTranscriberOf> rdf:type owl:ObjectProperty ;
                                             rdfs:subPropertyOf <http://scta.info/property/textitemToPersonRelationship> ;
@@ -268,14 +275,28 @@ Its goal is to structure the relationship between textitems and persons."""@en .
                                                          <http://scta.info/resource/Transcriber> .
 
 
+###  http://scta.info/resource/Decade1
+<http://scta.info/resource/Decade1> rdf:type owl:NamedIndividual ,
+                                             <http://scta.info/resource/TextItem> .
+
+
+###  http://scta.info/resource/Decade1_Sermon1
+<http://scta.info/resource/Decade1_Sermon1> rdf:type owl:NamedIndividual ,
+                                                     <http://scta.info/resource/Work> ;
+                                            <http://scta.info/property/creator> <http://scta.info/resource/Heinrich_Bullinger> ;
+                                            <http://scta.info/property/isPartOf> <http://scta.info/resource/Decade1> .
+
+
 ###  http://scta.info/resource/Decade1_Sermon1_Bern1558
 <http://scta.info/resource/Decade1_Sermon1_Bern1558> rdf:type owl:NamedIndividual ,
-                                                              <http://scta.info/resource/Manifestation> .
+                                                              <http://scta.info/resource/Manifestation> ;
+                                                     <http://scta.info/property/isManifestationOf> <http://scta.info/resource/UD1xh4-XddV3R> .
 
 
 ###  http://scta.info/resource/Decade1_Sermon1_London1587
 <http://scta.info/resource/Decade1_Sermon1_London1587> rdf:type owl:NamedIndividual ,
-                                                                <http://scta.info/resource/Manifestation> .
+                                                                <http://scta.info/resource/Manifestation> ;
+                                                       <http://scta.info/property/isManifestationOf> <http://scta.info/resource/UD1xh4-XddV3R> .
 
 
 ###  http://scta.info/resource/Ema-Joanne_Brauchler
@@ -291,23 +312,47 @@ Its goal is to structure the relationship between textitems and persons."""@en .
                                                         <http://scta.info/resource/Creator> .
 
 
+###  http://scta.info/resource/UD1xh4-XddV3R
+<http://scta.info/resource/UD1xh4-XddV3R> rdf:type owl:NamedIndividual ,
+                                                   <http://scta.info/resource/Expression> ;
+                                          <http://scta.info/property/author> <http://scta.info/resource/Heinrich_Bullinger> ;
+                                          <http://scta.info/property/isExpressionOf> <http://scta.info/resource/Decade1_Sermon1> .
+
+
 ###  http://scta.info/resource/UD1xh4-XddV3R-d1e313
 <http://scta.info/resource/UD1xh4-XddV3R-d1e313> rdf:type owl:NamedIndividual ,
                                                           <http://scta.info/resource/Manifestation> ;
+                                                 <http://scta.info/property/contributor> <http://www.semanticweb.org/jcwitt/ontologies/2019/9/untitled-ontology-16#Jeffrey_C._Wit> ;
+                                                 <http://scta.info/property/editor> <http://scta.info/resource/Charlotte_Feidicker> ,
+                                                                                    <http://scta.info/resource/Ema-Joanne_Brauchler> ;
+                                                 <http://scta.info/property/isPartOf> <http://scta.info/resource/cod-U78DFf_UD1xh4-XddV3R> ,
+                                                                                      <http://scta.info/resource/cod-u2dgeg_UD1xh4-XddV3R> ;
                                                  rdfs:comment """Paragraph in 
 Decade 1, Sermon 1""" .
 
 
 ###  http://scta.info/resource/cod-U78DFf_UD1xh4-XddV3R
 <http://scta.info/resource/cod-U78DFf_UD1xh4-XddV3R> rdf:type owl:NamedIndividual ,
+                                                              <http://scta.info/resource/Manifestation> ,
                                                               <http://scta.info/resource/Transcription> ;
-                                                     <http://scta.info/property/isTranscriptionOf> <http://scta.info/resource/Decade1_Sermon1_Bern1558> .
+                                                     <http://scta.info/property/contributor> <http://scta.info/resource/Ema-Joanne_Brauchler> ,
+                                                                                             <http://www.semanticweb.org/jcwitt/ontologies/2019/9/untitled-ontology-16#Jeffrey_C._Wit> ;
+                                                     <http://scta.info/property/editor> <http://scta.info/resource/Charlotte_Feidicker> ;
+                                                     <http://scta.info/property/isManifestationOf> <http://scta.info/resource/Decade1_Sermon1_Bern1558> ;
+                                                     <http://scta.info/property/isTranscriptionOf> <http://scta.info/resource/Decade1_Sermon1_Bern1558> ;
+                                                     <http://scta.info/property/transcriber> <http://scta.info/resource/Charlotte_Feidicker> .
 
 
 ###  http://scta.info/resource/cod-u2dgeg_UD1xh4-XddV3R
 <http://scta.info/resource/cod-u2dgeg_UD1xh4-XddV3R> rdf:type owl:NamedIndividual ,
+                                                              <http://scta.info/resource/Manifestation> ,
                                                               <http://scta.info/resource/Transcription> ;
-                                                     <http://scta.info/property/isTranscriptionOf> <http://scta.info/resource/Decade1_Sermon1_London1587> .
+                                                     <http://scta.info/property/contributor> <http://www.semanticweb.org/jcwitt/ontologies/2019/9/untitled-ontology-16#Jeffrey_C._Wit> ;
+                                                     <http://scta.info/property/editor> <http://scta.info/resource/Charlotte_Feidicker> ,
+                                                                                        <http://scta.info/resource/Ema-Joanne_Brauchler> ;
+                                                     <http://scta.info/property/isManifestationOf> <http://scta.info/resource/Decade1_Sermon1_London1587> ;
+                                                     <http://scta.info/property/isTranscriptionOf> <http://scta.info/resource/Decade1_Sermon1_London1587> ;
+                                                     <http://scta.info/property/transcriber> <http://scta.info/resource/Ema-Joanne_Brauchler> .
 
 
 ###  http://www.semanticweb.org/jcwitt/ontologies/2019/9/untitled-ontology-16#Jeffrey_C._Wit
