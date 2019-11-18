@@ -18,14 +18,20 @@ Its goal is to structure the relationship between textitems and persons."""@en .
 
 ###  http://scta.info/property/author
 <http://scta.info/property/author> rdf:type owl:ObjectProperty ;
+                                   rdfs:subPropertyOf <http://scta.info/property/textItemtoPersonRelation> ;
+                                   owl:inverseOf <http://scta.info/property/isAuthorOf> ;
                                    rdfs:domain <http://scta.info/resource/Expression> ;
                                    rdfs:range <http://scta.info/resource/Person> ;
-                                   owl:propertyDisjointWith <http://scta.info/property/editor> ;
+                                   owl:propertyDisjointWith <http://scta.info/property/creator> ,
+                                                            <http://scta.info/property/editor> ,
+                                                            <http://scta.info/property/transcriber> ;
                                    rdfs:label "has author"@en .
 
 
 ###  http://scta.info/property/contributor
 <http://scta.info/property/contributor> rdf:type owl:ObjectProperty ;
+                                        rdfs:subPropertyOf <http://scta.info/property/textItemtoPersonRelation> ;
+                                        owl:inverseOf <http://scta.info/property/isContributorOf> ;
                                         rdfs:domain [ owl:intersectionOf ( <http://scta.info/resource/Expression>
                                                                            <http://scta.info/resource/Manifestation>
                                                                            <http://scta.info/resource/Transcription>
@@ -39,72 +45,147 @@ Its goal is to structure the relationship between textitems and persons."""@en .
 
 ###  http://scta.info/property/creator
 <http://scta.info/property/creator> rdf:type owl:ObjectProperty ;
+                                    rdfs:subPropertyOf <http://scta.info/property/textItemtoPersonRelation> ;
+                                    owl:inverseOf <http://scta.info/property/isCreatorOf> ;
                                     rdfs:domain <http://scta.info/resource/Work> ;
                                     rdfs:range <http://scta.info/resource/Person> ;
+                                    owl:propertyDisjointWith <http://scta.info/property/editor> ,
+                                                             <http://scta.info/property/transcriber> ;
                                     rdfs:label "has creator"@en .
 
 
 ###  http://scta.info/property/editor
 <http://scta.info/property/editor> rdf:type owl:ObjectProperty ;
+                                   rdfs:subPropertyOf <http://scta.info/property/textItemtoPersonRelation> ;
+                                   owl:inverseOf <http://scta.info/property/isEditorOf> ;
                                    rdfs:domain <http://scta.info/resource/Manifestation> ;
                                    rdfs:range <http://scta.info/resource/Person> ;
+                                   owl:propertyDisjointWith <http://scta.info/property/transcriber> ;
                                    rdfs:label "has editor"@en .
 
 
 ###  http://scta.info/property/hasExpression
 <http://scta.info/property/hasExpression> rdf:type owl:ObjectProperty ;
+                                          rdfs:subPropertyOf <http://scta.info/property/textitemToTextItemRelation> ;
                                           owl:inverseOf <http://scta.info/property/isExpressionOf> ;
+                                          rdfs:domain <http://scta.info/resource/Work> ;
+                                          rdfs:range <http://scta.info/resource/Expression> ;
                                           owl:propertyDisjointWith <http://scta.info/property/hasManifestation> ,
-                                                                   <http://scta.info/property/hasTranscription> ,
-                                                                   <http://scta.info/property/hasWork> ;
+                                                                   <http://scta.info/property/hasTranscription> ;
                                           rdfs:label "has expression"@en .
 
 
 ###  http://scta.info/property/hasManifestation
 <http://scta.info/property/hasManifestation> rdf:type owl:ObjectProperty ;
+                                             rdfs:subPropertyOf <http://scta.info/property/textitemToTextItemRelation> ;
                                              owl:inverseOf <http://scta.info/property/isManifestationOf> ;
-                                             owl:propertyDisjointWith <http://scta.info/property/hasTranscription> ,
-                                                                      <http://scta.info/property/hasWork> ;
+                                             rdfs:domain <http://scta.info/resource/Expression> ;
+                                             rdfs:range <http://scta.info/resource/Manifestation> ;
+                                             owl:propertyDisjointWith <http://scta.info/property/hasTranscription> ;
                                              rdfs:label "has manifestation"@en .
 
 
 ###  http://scta.info/property/hasTranscription
 <http://scta.info/property/hasTranscription> rdf:type owl:ObjectProperty ;
+                                             rdfs:subPropertyOf <http://scta.info/property/textitemToTextItemRelation> ;
                                              owl:inverseOf <http://scta.info/property/isTranscriptionOf> ;
-                                             owl:propertyDisjointWith <http://scta.info/property/hasWork> ;
+                                             rdfs:domain <http://scta.info/resource/Manifestation> ;
+                                             rdfs:range <http://scta.info/resource/Transcription> ;
                                              rdfs:label "has transcription"@en .
 
 
-###  http://scta.info/property/hasWork
-<http://scta.info/property/hasWork> rdf:type owl:ObjectProperty ;
-                                    owl:inverseOf <http://scta.info/property/isWorkOf> ;
-                                    rdfs:domain <http://scta.info/resource/Expression> ;
-                                    rdfs:range <http://scta.info/resource/Work> ;
-                                    rdfs:label "has work"@en .
+###  http://scta.info/property/isAuthorOf
+<http://scta.info/property/isAuthorOf> rdf:type owl:ObjectProperty ;
+                                       rdfs:subPropertyOf <http://scta.info/property/textItemtoPersonRelation> ;
+                                       rdfs:domain <http://scta.info/resource/Person> ;
+                                       rdfs:range <http://scta.info/resource/Expression> ;
+                                       owl:propertyDisjointWith <http://scta.info/property/isCreatorOf> ,
+                                                                <http://scta.info/property/isEditorOf> ,
+                                                                <http://scta.info/property/isTranscriberOf> ;
+                                       rdfs:label "is author of"@en .
+
+
+###  http://scta.info/property/isContributorOf
+<http://scta.info/property/isContributorOf> rdf:type owl:ObjectProperty ;
+                                            rdfs:subPropertyOf <http://scta.info/property/textItemtoPersonRelation> ;
+                                            rdfs:domain <http://scta.info/resource/Person> ;
+                                            rdfs:range <http://scta.info/resource/Expression> ,
+                                                       <http://scta.info/resource/Manifestation> ,
+                                                       <http://scta.info/resource/Transcription> ,
+                                                       <http://scta.info/resource/Work> ;
+                                            rdfs:label "is contributor of"@en .
+
+
+###  http://scta.info/property/isCreatorOf
+<http://scta.info/property/isCreatorOf> rdf:type owl:ObjectProperty ;
+                                        rdfs:subPropertyOf <http://scta.info/property/textItemtoPersonRelation> ;
+                                        rdfs:domain <http://scta.info/resource/Person> ;
+                                        rdfs:range <http://scta.info/resource/Work> ;
+                                        owl:propertyDisjointWith <http://scta.info/property/isEditorOf> ,
+                                                                 <http://scta.info/property/isTranscriberOf> ;
+                                        rdfs:label "is creator of"@en .
+
+
+###  http://scta.info/property/isEditorOf
+<http://scta.info/property/isEditorOf> rdf:type owl:ObjectProperty ;
+                                       rdfs:subPropertyOf <http://scta.info/property/textItemtoPersonRelation> ;
+                                       rdfs:domain <http://scta.info/resource/Person> ;
+                                       rdfs:range <http://scta.info/resource/Manifestation> ;
+                                       owl:propertyDisjointWith <http://scta.info/property/isTranscriberOf> ;
+                                       rdfs:label "is editor of"@en .
 
 
 ###  http://scta.info/property/isExpressionOf
 <http://scta.info/property/isExpressionOf> rdf:type owl:ObjectProperty ;
+                                           rdfs:subPropertyOf <http://scta.info/property/textitemToTextItemRelation> ;
+                                           rdfs:domain <http://scta.info/resource/Expression> ;
+                                           rdfs:range <http://scta.info/resource/Work> ;
+                                           owl:propertyDisjointWith <http://scta.info/property/isManifestationOf> ,
+                                                                    <http://scta.info/property/isTranscriptionOf> ;
                                            rdfs:label "is expression of"@en .
 
 
 ###  http://scta.info/property/isManifestationOf
 <http://scta.info/property/isManifestationOf> rdf:type owl:ObjectProperty ;
+                                              rdfs:subPropertyOf <http://scta.info/property/textitemToTextItemRelation> ;
+                                              rdfs:domain <http://scta.info/resource/Manifestation> ;
+                                              rdfs:range <http://scta.info/resource/Expression> ;
+                                              owl:propertyDisjointWith <http://scta.info/property/isTranscriptionOf> ;
                                               rdfs:label "is manifestation of"@en .
+
+
+###  http://scta.info/property/isTranscriberOf
+<http://scta.info/property/isTranscriberOf> rdf:type owl:ObjectProperty ;
+                                            rdfs:subPropertyOf <http://scta.info/property/textItemtoPersonRelation> ;
+                                            owl:inverseOf <http://scta.info/property/transcriber> ;
+                                            rdfs:domain <http://scta.info/resource/Person> ;
+                                            rdfs:range <http://scta.info/resource/Transcription> ;
+                                            rdfs:label "is transcriber of"@en .
 
 
 ###  http://scta.info/property/isTranscriptionOf
 <http://scta.info/property/isTranscriptionOf> rdf:type owl:ObjectProperty ;
+                                              rdfs:subPropertyOf <http://scta.info/property/textitemToTextItemRelation> ;
+                                              rdfs:domain <http://scta.info/resource/Transcription> ;
+                                              rdfs:range <http://scta.info/resource/Manifestation> ;
                                               rdfs:label "is transcription of"@en .
 
 
-###  http://scta.info/property/isWorkOf
-<http://scta.info/property/isWorkOf> rdf:type owl:ObjectProperty ;
-                                     rdfs:label "is work of"@en .
+###  http://scta.info/property/textItemtoPersonRelation
+<http://scta.info/property/textItemtoPersonRelation> rdf:type owl:ObjectProperty ;
+                                                     rdfs:domain <http://scta.info/resource/TextItem> ;
+                                                     rdfs:range <http://scta.info/resource/Person> .
+
+
+###  http://scta.info/property/textitemToTextItemRelation
+<http://scta.info/property/textitemToTextItemRelation> rdf:type owl:ObjectProperty ;
+                                                       rdfs:domain <http://scta.info/resource/TextItem> ;
+                                                       rdfs:range <http://scta.info/resource/TextItem> .
 
 
 ###  http://scta.info/property/transcriber
 <http://scta.info/property/transcriber> rdf:type owl:ObjectProperty ;
+                                        rdfs:subPropertyOf <http://scta.info/property/textItemtoPersonRelation> ;
                                         rdfs:domain <http://scta.info/resource/Transcription> ;
                                         rdfs:range <http://scta.info/resource/Person> ;
                                         rdfs:label "has transcriber"@en .
@@ -154,22 +235,61 @@ Its goal is to structure the relationship between textitems and persons."""@en .
 #    Individuals
 #################################################################
 
+###  http://scta.info/resource/Charlotte_Feidicker
+<http://scta.info/resource/Charlotte_Feidicker> rdf:type owl:NamedIndividual ,
+                                                         <http://scta.info/resource/Person> .
+
+
+###  http://scta.info/resource/Ema-Joanne_Brauchler
+<http://scta.info/resource/Ema-Joanne_Brauchler> rdf:type owl:NamedIndividual ,
+                                                          <http://scta.info/resource/Person> .
+
+
+###  http://scta.info/resource/Heinrich_Bullinger
+<http://scta.info/resource/Heinrich_Bullinger> rdf:type owl:NamedIndividual ,
+                                                        <http://scta.info/resource/Person> .
+
+
+###  http://scta.info/resource/UD1xh4-XddV3R
+<http://scta.info/resource/UD1xh4-XddV3R> rdf:type owl:NamedIndividual ,
+                                                   <http://scta.info/resource/Expression> ;
+                                          rdfs:comment "Decade 1, Sermon 1" .
+
+
+###  http://scta.info/resource/UD1xh4-XddV3R-d1e313
+<http://scta.info/resource/UD1xh4-XddV3R-d1e313> rdf:type owl:NamedIndividual ,
+                                                          <http://scta.info/resource/TextItem> ;
+                                                 rdfs:comment """Paragraph in 
+Decade 1, Sermon 1""" .
+
+
+###  http://scta.info/resource/cod-U78DFf_UD1xh4-XddV3R
+<http://scta.info/resource/cod-U78DFf_UD1xh4-XddV3R> rdf:type owl:NamedIndividual ,
+                                                              <http://scta.info/resource/Manifestation> ;
+                                                     <http://scta.info/property/hasExpression> <http://scta.info/resource/UD1xh4-XddV3R> ;
+                                                     rdfs:comment "Decade 1, Sermon 1, german version" .
+
+
+###  http://scta.info/resource/cod-U78DFf_UD1xh4-XddV3R.xml
+<http://scta.info/resource/cod-U78DFf_UD1xh4-XddV3R.xml> rdf:type owl:NamedIndividual ,
+                                                                  <http://scta.info/resource/Transcription> .
+
+
+###  http://scta.info/resource/cod-u2dgeg_UD1xh4-XddV3R
+<http://scta.info/resource/cod-u2dgeg_UD1xh4-XddV3R> rdf:type owl:NamedIndividual ,
+                                                              <http://scta.info/resource/Manifestation> ;
+                                                     <http://scta.info/property/hasExpression> <http://scta.info/resource/UD1xh4-XddV3R> ;
+                                                     rdfs:comment "Decade 1, Sermon 1, english version" .
+
+
+###  http://scta.info/resource/cod-u2dgeg_UD1xh4-XddV3R.xml
+<http://scta.info/resource/cod-u2dgeg_UD1xh4-XddV3R.xml> rdf:type owl:NamedIndividual ,
+                                                                  <http://scta.info/resource/Transcription> .
+
+
 ###  http://www.semanticweb.org/jcwitt/ontologies/2019/9/untitled-ontology-16#Jeffrey_C._Wit
 <http://www.semanticweb.org/jcwitt/ontologies/2019/9/untitled-ontology-16#Jeffrey_C._Wit> rdf:type owl:NamedIndividual ,
                                                                                                    <http://scta.info/resource/Person> .
-
-
-#################################################################
-#    General axioms
-#################################################################
-
-[ rdf:type owl:AllDisjointProperties ;
-  owl:members ( <http://scta.info/property/isExpressionOf>
-                <http://scta.info/property/isManifestationOf>
-                <http://scta.info/property/isTranscriptionOf>
-                <http://scta.info/property/isWorkOf>
-              )
-] .
 
 
 ###  Generated by the OWL API (version 4.5.9.2019-02-01T07:24:44Z) https://github.com/owlcs/owlapi
