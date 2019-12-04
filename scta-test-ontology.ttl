@@ -312,6 +312,11 @@ Its goal is to structure the relationship between textitems and persons."""@en .
                                                         <http://scta.info/resource/Creator> .
 
 
+###  http://scta.info/resource/Jeffrey_C._Witt
+<http://scta.info/resource/Jeffrey_C._Witt> rdf:type owl:NamedIndividual ;
+                                            owl:sameAs <http://www.semanticweb.org/jcwitt/ontologies/2019/9/untitled-ontology-16#Jeffrey_C._Wit> .
+
+
 ###  http://scta.info/resource/UD1xh4-XddV3R
 <http://scta.info/resource/UD1xh4-XddV3R> rdf:type owl:NamedIndividual ,
                                                    <http://scta.info/resource/Expression> ;

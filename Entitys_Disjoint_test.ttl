@@ -1,0 +1,2 @@
+<http://example.org/Entity1> <http://scta.info/property/hasExpression> <http://example.org/Entity2>.
+<http://example.org/Entity1> <http://scta.info/property/hasManifestation> <http://example.org/Entity2>.
