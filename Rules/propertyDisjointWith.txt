@@ -1,0 +1,22 @@
+This is rule 1. We intend this rule to check the consitity of our test ontology.
+It will test, if there are any Individuals that are conected to each other more than ones AND
+by properties that are owl:propertyDisjointWith.
+We expect, that the result will be zero.
+
+THIS IS THE SPARQL-QUERY:
+
+
+PREFIX rdf: <http://www.w3.org/1999/02/22-rdf-syntax-ns#>
+PREFIX owl: <http://www.w3.org/2002/07/owl#>
+PREFIX sctar: <http://www.scta.info/resource/>
+PREFIX sctap: <http://www.scta.info/property/>
+
+
+SELECT ?S ?P ?P2 ?O
+WHERE {
+  ?P owl:propertyDisjointWith ?P2.
+  ?S ?P ?O.
+  ?S ?P2 ?O.
+
+}
+LIMIT 25

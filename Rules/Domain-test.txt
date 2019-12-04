@@ -1,0 +1,16 @@
+This is rule 2. It tests if there is any domain thats domain-type of several properties
+
+
+PREFIX sctap: <http://www.scta.info/property/>
+PREFIX rdfs: <http://www.w3.org/2000/01/rdf-schema#>
+
+
+SELECT ?dType ?sType ?s ?p ?o
+WHERE {
+  ?p rdfs:domain ?dType.
+  ?s ?p ?o .
+  ?s a ?sType
+
+  FILTER(?sType != ?dType)
+
+}
