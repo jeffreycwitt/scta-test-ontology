@@ -4,12 +4,12 @@ PREFIX sctap: <http://www.scta.info/property/>
 PREFIX rdfs: <http://www.w3.org/2000/01/rdf-schema#>
 
 
-SELECT ?rType ?sType ?s ?p ?o
+SELECT ?rType ?oType ?s ?p ?o
 WHERE {
   ?p rdfs:range ?rType.
   ?s ?p ?o .
-  ?s a ?sType
+  ?o a ?oType .
 
-  FILTER(?sType != ?dType)
+  FILTER(?oType != ?rType)
 
 }
