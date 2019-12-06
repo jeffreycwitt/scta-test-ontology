@@ -1,0 +1,20 @@
+This is to test for disjoint Classes.
+In the logic of owl, an individual can be a member of several classes.
+But sometimes, we want to say that one individual is the member of class1
+and THEREFORE can not be member of class2.
+In this case, we might want to state two classes as disjointClasses.
+
+PREFIX rdf: <http://www.w3.org/1999/02/22-rdf-syntax-ns#>
+PREFIX owl: <http://www.w3.org/2002/07/owl#>
+PREFIX sctar: <http://www.scta.info/resource/>
+PREFIX sctap: <http://www.scta.info/property/>
+
+SELECT ?S ?S2 ?P ?O
+WHERE {
+?S owl:disjointClasses ?S2 .
+?S ?P ?O .
+?S2 ?P ?O .
+}
+
+QUESTION: THIS WOULD ONLY WORK OUT IF WE WOULD HAVE MARKED AT LEAST TWO CLASSES
+AS DISJOINT IN OUR DATE. DID WE?
