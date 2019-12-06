@@ -1,0 +1,18 @@
+This document is a list of all owl-Properties that might be an inspiration for the creation of more consistancy-checks.
+They might be discussed and may get their own rule-docuement after it.
+
+owl:equivalentProperty rdf:range rdf:Property, rdf:domain rdf:Property,
+is NOT used for properties that are equal,
+but for properties that have the same values with a different meaning anyway.
+ We might ask for every Property that is stated as equivalent to another,
+ we would expect no results.
+SELECT ?h
+?p rdf:range ?x; rdf:domaine ?y.
+?x, ?y a rdf:Property.
+?h rdf:range ?x; rdf:domaine ?y. OR: ?h = ?p. [?]
+
+owl:inverseOf
+We might like to test if any Property does not have an inverse Property.
+SELECT ?p ?p2
+?p NOT owl:inverseOf ?p2.
+?p2 rdf:domaine ?O.
