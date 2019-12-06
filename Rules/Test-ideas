@@ -30,3 +30,16 @@ WHERE {
 
 FILTER(?p3 != ?p)
 }
+
+rdfs:label
+If we want every class, instance and property to have a rdfs:label,
+we might like to test if there was one without any label.
+
+SELECT ?Xx ?Yy ?literal
+WHERE {
+?Xx a owl:Thing.                Comment: Make sure, that everything is a owl:thing first.
+?Xx rdfs:label ?literal.
+?Yy a owl:Thing.
+
+FILTER(Xx != Yy)
+}
